@@ -88,6 +88,9 @@ function playGame() {
     console.log(
       `It's a Damned Tie!: Your Score : ${humanScore} || Computer Score: ${computerScore}`
     );
+    return alert(
+      `It's a Damned Tie!: Your Score : ${humanScore} || Computer Score: ${computerScore}`
+    );
   } else if (humanScore > computerScore) {
     console.log(
       `You won the Game: Your Score : ${humanScore} || Computer Score: ${computerScore}`
