@@ -8,6 +8,7 @@
 
 let humanScore = 0;
 let computerScore = 0;
+const numberOfRounds = 5;
 
 // the logic to get the computer choice
 
@@ -48,7 +49,7 @@ function playRound(humanChoice, computerChoice) {
   ) {
     humanScore++;
     console.log(
-      `You win , ${computerChoice} beats ${humanChoice} : Your Score: ${humanScore} || Computer Score : ${computerScore}`
+      `You win , ${humanChoice} beats ${computerChoice} : Your Score: ${humanScore} || Computer Score : ${computerScore}`
     );
     return alert(
       `You win , ${humanChoice} beats ${computerChoice} : Your Score : ${humanScore} || Computer Score : ${computerScore}`
@@ -56,10 +57,10 @@ function playRound(humanChoice, computerChoice) {
   } else {
     computerScore++;
     console.log(
-      `You lose , ${computerChoice} beats ${humanChoice} : Computer Score : ${computerChoice} || Your Score: ${humanScore}`
+      `You lose , ${computerChoice} beats ${humanChoice} : Computer Score : ${computerScore} || Your Score: ${humanScore}`
     );
     return alert(
-      `You lose , ${computerChoice} beats ${humanChoice} : Computer Score : ${computerChoice} || Your Score: ${humanScore}`
+      `You lose , ${computerChoice} beats ${humanChoice} : Computer Score : ${computerScore} || Your Score: ${humanScore}`
     );
   }
 }
@@ -67,3 +68,44 @@ function playRound(humanChoice, computerChoice) {
 // playRound(getHumanChoice, getComputerChoice);
 
 // Logic to play the Entire game
+
+function playGame() {
+  for (let i = 1; i <= numberOfRounds; i++) {
+    const humanChoice = prompt(
+      `Round ${i}|| : Enter Your choices between 'Rock' 'Paper' and 'Scissors' `
+    );
+    if (humanChoice === null) {
+      console.log("Game cancelled");
+      alert("game cancelled");
+      break;
+    }
+
+    const computerChoice = getComputerChoice();
+    const roundResult = playRound(humanChoice, computerChoice);
+    console.log(roundResult);
+  }
+  if (humanScore === computerScore) {
+    console.log(
+      `It's a Damned Tie!: Your Score : ${humanScore} || Computer Score: ${computerScore}`
+    );
+  } else if (humanScore > computerScore) {
+    console.log(
+      `You won the Game: Your Score : ${humanScore} || Computer Score: ${computerScore}`
+    );
+    return alert(
+      `You won the Game: Your Score : ${humanScore} || Computer Score: ${computerScore}`
+    );
+  } else {
+    console.log(
+      `You lost the Game: Your Score : ${humanScore} || Computer Score: ${computerScore}`
+    );
+    return alert(
+      `You lost the Game: Your Score : ${humanScore} || Computer Score: ${computerScore}`
+    );
+  }
+}
+
+playGame();
+
+// To Do:
+// making the game play smoothly , including the number of tie games at the end as well
